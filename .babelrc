@@ -1,4 +1,7 @@
 {
   "presets": ["env", "react"],
-  "plugins": "transform-class-properties" // pas besoin de préfixer 'babel-plugin-'
+  "plugins": [
+    "transform-class-properties",    // pas besoin de préfixer 'babel-plugin-'
+    "transform-object-rest-spread"
+  ]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "Expensify",
+  "name": "expensify",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Daniel Meilleur",
@@ -14,6 +14,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
@@ -23,8 +24,12 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-modal": "^3.4.4",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^4.0.0",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
+    "uuid": "^3.2.1",
     "validator": "^9.4.1",
     "webpack": "^4.6.0",
     "webpack-dev-server": "^3.1.3"
