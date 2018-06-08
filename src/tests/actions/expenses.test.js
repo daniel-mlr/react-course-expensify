@@ -17,12 +17,12 @@ test('doit mettre en place l\'objet pour édition de expense', () => {
   })
 })
 
-test ('doit mettre en place l\'objet pour l\'ajout de expense', () => {
+test('doit mettre en place l\'objet pour l\'ajout de expense', () => {
   const expenseData = {
-    description: "Rent",
+    description: 'Rent',
     amount: 108000,
     createdAt: 1000,
-    note: "Le dernier loyer"
+    note: 'Le dernier loyer'
   }
   const action = addExpense(expenseData)
   expect(action).toEqual({
@@ -34,7 +34,7 @@ test ('doit mettre en place l\'objet pour l\'ajout de expense', () => {
   })
 })
 
-test ('should setup add expense action object with default values', () => {
+test('should setup add expense action object with default values', () => {
   const action = addExpense()
   expect(action).toEqual({
     type: 'ADD_EXPENSE',

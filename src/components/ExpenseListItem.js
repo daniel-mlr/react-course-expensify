@@ -1,25 +1,23 @@
-/* eslint react/prop-types: 0 */
+/* eslint react/prop-types: 0, quotes: 0 */
 import React from 'react'
-import {connect} from 'react-redux'
-import {removeExpense} from '../actions/expenses'
+import { Link } from 'react-router-dom'
 
-const ExpenseListItem = ({ dispatch, id, count, description, amount, createdAt }) => (
+export const ExpenseListItem = ({
+  id,
+  count,
+  description,
+  amount,
+  createdAt
+}) => (
   <div>
-    <p>{count} - <em>{description}</em>: {'\u00A0'} $ 
-      {( amount/100 ).toFixed(2)} {'\u00A0'}
-      {createdAt}
+    <p>{count} - <Link to={'/edit/'.concat(id)}>{description}</Link> 
+      {'\u00A0'} $ {( amount/100 ).toFixed(2)}
+      {'\u00A0'} {createdAt}
     </p>
-    <button onClick={() => {
-      //removeExpense()
-      dispatch( removeExpense({ id }) )
-      console.log(id, removeExpense({id}))
-    }} >
-    Remove
-    </button>
   </div>
 )
 
-// export default ExpenseListItem
-export default connect()(ExpenseListItem)
+export default ExpenseListItem
+// export default connect()(ExpenseListItem)
 // _____________| simply give access to dispatch()
 

@@ -15,7 +15,7 @@ export const sortByAmount = () => ({
 
 // SET_START_DATE
 export const setStartDate = (date) => ({
-  type: 'SET_STARD_DATE',
+  type: 'SET_START_DATE',
   date
 })
 // SET_END_DATE

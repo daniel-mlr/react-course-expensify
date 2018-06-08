@@ -8,17 +8,20 @@ import selectExpenses from '../selectors/expenses'
 // Regular unconnected component.
 // Presentation component pattern.
 // Get re-rendered with new prop values.
-const ExpenseList = (props) => (
+export const ExpenseList = (props) => (
   <div>
-    <h1>Expense List</h1>
     {
-      props.expenses.map( ( expense, index ) => (
-        <ExpenseListItem {...expense} 
-          key={expense.id} 
-          index={index} 
-          count={index + 1}
-        />
-      ))
+      props.expenses.length === 0 ? (
+        <p>No expenses yet</p>
+      ) : (
+        props.expenses.map( ( expense, index ) => (
+          <ExpenseListItem {...expense}
+            key={expense.id}
+            index={index}
+            count={index + 1}
+          />
+        ))
+      )
     }
   </div>
 )
