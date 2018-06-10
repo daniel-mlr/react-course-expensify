@@ -12,6 +12,8 @@ import {addExpense} from './actions/expenses'
 // import {setTextFilter} from './actions/filters'
 import 'normalize.css/normalize.css'
 import './styles/style.scss'
+import 'react-dates/lib/css/_datepicker.css'
+import 'react-dates/initialize'
 
 // s9 lect 99 combining all together
 

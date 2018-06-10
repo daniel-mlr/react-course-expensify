@@ -2,7 +2,6 @@
 
 exports[`should render Header correctly 1`] = `
 <header>
-  asdf
   <h1>
     Expensify
   </h1>

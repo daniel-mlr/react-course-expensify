@@ -2,8 +2,6 @@
 import React from 'react'
 import moment from 'moment' // remplace new Date; requis par react-dates
 import {SingleDatePicker} from 'react-dates'  // calender picker tool
-import 'react-dates/lib/css/_datepicker.css'
-import 'react-dates/initialize'
 
 //const now = moment()
 //console.log(now.format('Do MMM YYYY'))
@@ -11,7 +9,7 @@ import 'react-dates/initialize'
 export default class ExpenseForm extends React.Component {
   constructor(props) {
     super(props)
-    console.log('dans expense form', props)
+    // console.log('dans expense form', props)
     this.state = {
       description: props.expense ? props.expense.description : '',
       note: props.expense ? props.expense.note : '',

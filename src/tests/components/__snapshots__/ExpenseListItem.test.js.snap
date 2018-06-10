@@ -5,10 +5,12 @@ exports[`should render ExpenseListItem with an expense item 1`] = `
   <p>
     1
      - 
-    <em>
+    <Link
+      replace={false}
+      to="/edit/2"
+    >
       Rent
-    </em>
-    : 
+    </Link>
      
      $ 
     850.00
@@ -16,10 +18,5 @@ exports[`should render ExpenseListItem with an expense item 1`] = `
      
     -345600000
   </p>
-  <button
-    onClick={[Function]}
-  >
-    Remove
-  </button>
 </div>
 `;

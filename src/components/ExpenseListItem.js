@@ -2,7 +2,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const ExpenseListItem = ({
+//export const ExpenseListItem = ({
+const ExpenseListItem = ({
   id,
   count,
   description,
@@ -18,6 +19,11 @@ export const ExpenseListItem = ({
 )
 
 export default ExpenseListItem
+// utilisé dans la première version avec le bouton 'delete' adjoint à chaque
+// item de la liste des expenses:
 // export default connect()(ExpenseListItem)
-// _____________| simply give access to dispatch()
+//                ╰───────────────────────╯
+//                            ▲
+// ───────────────────────────┘
+// simply give access to dispatch()
 

@@ -3,5 +3,10 @@
   "plugins": [
     "transform-class-properties",    // pas besoin de préfixer 'babel-plugin-'
     "transform-object-rest-spread"
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
 }

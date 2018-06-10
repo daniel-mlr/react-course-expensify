@@ -12,7 +12,7 @@ export const ExpenseList = (props) => (
   <div>
     {
       props.expenses.length === 0 ? (
-        <p>No expenses yet</p>
+        <p>No expenses yet.</p>
       ) : (
         props.expenses.map( ( expense, index ) => (
           <ExpenseListItem {...expense}
@@ -36,8 +36,8 @@ const mapStateToProps = (state) => {
 
 // higher order component
 export default connect(mapStateToProps)(ExpenseList)
-//                         /\                /\
-//                          |                 |
-// ce qu'on veux du 'store'_|                 |
-// component qu'on veut augmenter par le HOC _|
-
+//                     ╰─────────────╯  ╰─────────╯
+//                           ▲                 ▲
+//                           │                 │
+// ce qu'on veux du 'store'──┘                 │
+// component qu'on veut augmenter par le HOC ──┘
