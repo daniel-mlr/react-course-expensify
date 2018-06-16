@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import ExpenseForm from '../../components/ExpenseForm'
 import expenses from '../fixtures/expenses'
+import moment from 'moment'
 
 test('should render Expense Form correctly', () => {
   const wrapper = shallow(<ExpenseForm />)
@@ -68,4 +69,48 @@ test('should not set amount if invalid input', () => {
     target: {value}
   })
   expect(wrapper.state('amount')).toBe('')
+})
+
+// utilisation de spy
+test('should call onSubmit prop for valid form submission', () => {
+  const onSubmitSpy = jest.fn() // fake function
+  /*
+  onSubmitSpy()  // on call le spy, donc le 'expect' devrait passer sans erreur
+  expect(onSubmitSpy).toHaveBeenCalled()
+  */
+  const wrapper = shallow(<ExpenseForm 
+    expense={expenses[0]}
+    onSubmit={onSubmitSpy}
+  />)
+  wrapper.find('form').simulate('submit', {
+    preventDefault: () => {}
+  })
+  expect(wrapper.state('error')).toBe('')
+  // on ne peut pas simplement prendre expenses[0] comme argument pour
+  // .toHaveBenLastCalledWith() car il contient un membre ('id') qui ne devrait
+  // pas être présent.
+  expect(onSubmitSpy).toHaveBeenLastCalledWith({
+    description: expenses[0].description,
+    amount: expenses[0].amount,
+    note: expenses[0].note,
+    createdAt: expenses[0].createdAt
+  })
+})
+
+test('should set new date on date change', () => {
+  const now = moment()
+  const wrapper = shallow(<ExpenseForm/>)
+  // on peut sélectionner un component par le component name...
+  // puis on peut aller chercher une propriété spécifique
+  wrapper.find('withStyles(SingleDatePicker)').prop('onDateChange')(now)
+  // ceci ne fonctionne pas: 
+  // wrapper.find('SingleDatePicker').prop('onDateChange')(now)
+  expect(wrapper.state('createdAt')).toEqual(now)
+})
+
+test('should set calendar focus on change', () => {
+  const focused = true
+  const wrapper = shallow(<ExpenseForm/>)
+  wrapper.find('withStyles(SingleDatePicker)').prop('onFocusChange')({focused})
+  expect(wrapper.state('calenderFocused')).toBe(focused)
 })

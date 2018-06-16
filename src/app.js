@@ -12,8 +12,8 @@ import {addExpense} from './actions/expenses'
 // import {setTextFilter} from './actions/filters'
 import 'normalize.css/normalize.css'
 import './styles/style.scss'
-import 'react-dates/lib/css/_datepicker.css'
-import 'react-dates/initialize'
+//import 'react-dates/initialize'
+//import 'react-dates/lib/css/_datepicker.css'
 
 // s9 lect 99 combining all together
 
@@ -27,7 +27,7 @@ store.dispatch(addExpense({
 }))
 store.dispatch(addExpense({
   description: 'Gas bill',
-  amount: 800,
+  amount: 823,
   createdAt: 80000
 }))
 store.dispatch(addExpense({

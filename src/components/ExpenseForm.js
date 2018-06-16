@@ -2,6 +2,9 @@
 import React from 'react'
 import moment from 'moment' // remplace new Date; requis par react-dates
 import {SingleDatePicker} from 'react-dates'  // calender picker tool
+// enlever les deux lignes suivantes
+import 'react-dates/lib/css/_datepicker.css'
+import 'react-dates/initialize'
 
 //const now = moment()
 //console.log(now.format('Do MMM YYYY'))
@@ -53,7 +56,7 @@ export default class ExpenseForm extends React.Component {
       })
     }
   }
-  
+
   render() {
     return (
       <div>
