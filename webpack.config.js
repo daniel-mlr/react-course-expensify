@@ -1,15 +1,17 @@
-/** s13 lect 133 config pour production 
- * ajout d'un script dans package.json qui permet d'utiliser l'environnement de
- * production. Modification de webpack.config.js pour choisir le devtool.
+/** s13 L134: extract-text-webpack-plugin
+ * pour extraire les css et les placer dans un fichier séparé
  */
 
 /* global module, __dirname, require */
 
 const path = require('path')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-// exporte une fonction qui retourne un objet, plutôt que l'objet lui-même
 module.exports = (env) => {
   const isProduction = env === 'production'
+  const CSSExtract = new MiniCssExtractPlugin({ filename:  'style.css' })
+
   return {
     entry: './src/app.js',
     mode: 'development',
@@ -25,13 +27,21 @@ module.exports = (env) => {
       }, {
         test: /\.s?css$/,
         use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: { sourceMap: true }
+          },
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: true }
+          }
         ]
       }]
     },
-    devtool:isProduction ? 'source-map' : 'cheap-module-eval-source-map',
+    plugins: [ CSSExtract ],
+    // devtool:isProduction ? 'source-map' : 'cheap-module-eval-source-map',
+    devtool:isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true
