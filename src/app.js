@@ -1,4 +1,4 @@
-/* s8 lect 62 Refactoring Stateless Funcional components */
+/* nettoyage et upload sur git */
 
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -6,12 +6,12 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import AppRouter from './routers/AppRouter'
 import configureStore from './store/configureStore' // s9 lect 99
-import {addExpense} from './actions/expenses'
-// Sect 13 lect 131
+// styling
 import 'normalize.css/normalize.css'
 import './styles/style.scss'
-//import 'react-dates/initialize'
-//import 'react-dates/lib/css/_datepicker.css'
+// style rapporté de ExpenseListFilter
+import 'react-dates/initialize'
+import 'react-dates/lib/css/_datepicker.css'
 
 // création d'un 'store'
 const store = configureStore()
