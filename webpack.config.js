@@ -6,6 +6,7 @@
 
 const path = require('path')
 // const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// remplacé par: (voir s13 L134 'Browse Q&A')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = (env) => {
