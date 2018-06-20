@@ -5,15 +5,6 @@ import expenses from '../fixtures/expenses'
 
 
 test('should render ExpenseListItem with an expense item', () => {
-  /*
-  const wrapper = shallow(<ExpenseListItem 
-    count={expenses[1].count}
-    description={expenses[1].description}
-    amount={expenses[1].amount}
-    createdAt={expenses[1].createdAt}
-  />)
-  */
   const wrapper = shallow(<ExpenseListItem  { ...expenses[1]}  count={1}/>)
-
   expect(wrapper).toMatchSnapshot()
 })

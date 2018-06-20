@@ -1,6 +1,8 @@
 /* eslint react/prop-types: 0, quotes: 0 */
 import React from 'react'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
+import numeral from 'numeral'
 
 //export const ExpenseListItem = ({
 const ExpenseListItem = ({
@@ -12,8 +14,9 @@ const ExpenseListItem = ({
 }) => (
   <div>
     <p>{count} - <Link to={'/edit/'.concat(id)}>{description}</Link> 
-      {'\u00A0'} $ {( amount/100 ).toFixed(2)}
-      {'\u00A0'} {createdAt}
+      {numeral(amount / 100).format('$0,0.00')}
+      - 
+      {moment(createdAt).format('MMMM Do, YYYY')}
     </p>
   </div>
 )
