@@ -29,6 +29,3 @@ export default ExpenseListItem
 //                            ▲
 // ───────────────────────────┘
 // simply give access to dispatch()
-
-//    <p>{count} - <Link to={'/edit/'.concat(id)}>{description}</Link> 
-//    <p>{count} - <Link to={`/edit/$(id)`}>{description}</Link> 
