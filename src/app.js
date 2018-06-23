@@ -12,6 +12,11 @@ import './styles/style.scss'
 // style rapporté de ExpenseListFilter
 import 'react-dates/initialize'
 import 'react-dates/lib/css/_datepicker.css'
+// database connection
+import './firebase/firebase'
+
+// tests pour promesses
+// import './playground/promises'
 
 // création d'un 'store'
 const store = configureStore()
