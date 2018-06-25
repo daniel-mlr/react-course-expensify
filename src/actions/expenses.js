@@ -1,3 +1,4 @@
+// actions/expenses.js
 // import uuid from 'uuid'
 import db from '../firebase/firebase'
 
@@ -58,4 +59,27 @@ export const editExpense = (id, updates) => ({
   id,
   updates
 })
+
+// SET_EXPENSES
+export const setExpenses = (expenses) => ({
+  type: 'SET_EXPENSES',
+  expenses
+})
+
+export const startSetExpenses = () => {
+  return (dispatch) => {
+    const expenses = []
+
+    return db.ref('expenses').once('value')
+      .then((snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          expenses.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          })
+        })
+        dispatch(setExpenses(expenses))
+      })
+  }
+}
 

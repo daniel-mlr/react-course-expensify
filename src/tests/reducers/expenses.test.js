@@ -35,13 +35,6 @@ test('should edit an expense, given id', () => {
     updates: {amount}
   }
   const state = expensesReducer(expenses, action)
-  /*
-  expect(state).toEqual([
-    expenses[0], 
-    {...expenses[1], amount}, 
-    expenses[2]
-  ])
-  */
   expect(state[1].amount).toBe(amount)
 })
 test('should not edit an expense, if id not found', () => {
@@ -52,4 +45,27 @@ test('should not edit an expense, if id not found', () => {
   }
   const state = expensesReducer(expenses, action)
   expect(state).toEqual(expenses)
+})
+test('should set expenses', () => {
+  // dispatch an action
+  const expensesToBeSet = [ {
+    id: 4, 
+    description: 'test description',
+    note: 'test note',
+    amount: 1200,
+    createdAt: 10000
+  }, {
+    id: 2, 
+    description: 'test desc. deux',
+    note: 'test note deux',
+    amount: 100,
+    createdAt: 20000
+  } ]
+  const action = {
+    type : 'SET_EXPENSES',
+    expenses: expensesToBeSet
+  }
+  const state = expensesReducer(expenses, action)
+  // expect all expenses passed in to be inside of the state 
+  expect(state).toEqual(expensesToBeSet)
 })

@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import AppRouter from './routers/AppRouter'
 import configureStore from './store/configureStore' // s9 lect 99
+import { startSetExpenses } from './actions/expenses'
 // styling
 import 'normalize.css/normalize.css'
 import './styles/style.scss'
@@ -25,4 +26,8 @@ const jsx = (
     <AppRouter/>
   </Provider>
 )
-ReactDOM.render(jsx, document.getElementById('app'))
+ReactDOM.render(<p>Loading ...</p>, document.getElementById('app'))
+store.dispatch(startSetExpenses()).then(() => {
+  ReactDOM.render(jsx, document.getElementById('app'))
+})
+
