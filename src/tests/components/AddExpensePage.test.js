@@ -5,15 +5,15 @@ import { AddExpensePage } from '../../components/AddExpensePage.js'
 import expenses from '../fixtures/expenses'
 
 // factorisaton à l'aide d'une des globals de jest (beforreEach())
-let addExpense, history, wrapper
+let startAddExpense, history, wrapper
 beforeEach(() => {
   // définition des espions
-  addExpense = jest.fn()
+  startAddExpense = jest.fn()
   history = { push: jest.fn() } // push est un attribut de history
 
   // shallow rendering
   wrapper = shallow(<AddExpensePage 
-    addExpense = {addExpense}
+    startAddExpense = {startAddExpense}
     history = {history}
   />)
 })
@@ -30,5 +30,5 @@ test('should handle onSubmit', () => {
 
   // vérif. que les fonction espion a été appelées avec le bon argument
   expect(history.push).toHaveBeenLastCalledWith('/')
-  expect(addExpense).toHaveBeenLastCalledWith(expenses[1])
+  expect(startAddExpense).toHaveBeenLastCalledWith(expenses[1])
 })

@@ -1,6 +1,12 @@
-import {createStore, combineReducers} from 'redux'
+import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
+// ajouté pour redux-thunk            ---------------
 import expensesReducer from '../reducers/expenses'
 import filtersReducer from '../reducers/filters'
+import thunk from 'redux-thunk'
+
+// ajouté pour préserver les fonctionalités du developper-tool de Chrome
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
 
 // Store creation
 export default () => {
@@ -9,7 +15,8 @@ export default () => {
       expenses: expensesReducer,
       filters: filtersReducer
     }),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeEnhancers(applyMiddleware(thunk))
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
   return store
 }
