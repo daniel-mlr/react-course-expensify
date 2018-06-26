@@ -168,6 +168,7 @@ db.ref('expenses').push({
 })
 // ----------------------------------------
 
+
 // getting data transformed in the right format for redux
 db.ref('expenses').once('value')
   .then((snapshot) => {
