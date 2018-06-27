@@ -7,7 +7,8 @@ import { Provider } from 'react-redux'
 import AppRouter, { history } from './routers/AppRouter'
 import configureStore from './store/configureStore' // s9 lect 99
 import { startSetExpenses } from './actions/expenses'
-// import LoginPage from './components/LoginPage'
+import { login, logout } from './actions/auth'
+
 // styling
 import 'normalize.css/normalize.css'
 import './styles/style.scss'
@@ -42,7 +43,8 @@ ReactDOM.render(<p>Loading ...</p>, document.getElementById('app'))
 firebase.auth().onAuthStateChanged((user) => {
   // callback function when auth state changes
   if (user) {
-    console.log('logged in')
+    console.log('user id: ', user.uid)
+    store.dispatch(login(user.uid))
     store.dispatch(startSetExpenses()).then(() => {
       renderApp()
       if ( history.location.pathname === '/' ) {
@@ -51,6 +53,7 @@ firebase.auth().onAuthStateChanged((user) => {
     })
   } else {
     console.log('logged out')
+    store.dispatch(logout())
     renderApp()
     history.push('/')
   }
