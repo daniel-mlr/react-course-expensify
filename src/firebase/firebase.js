@@ -15,7 +15,11 @@ firebase.initializeApp(config)
 // database est une parmi nombreuses fonctionalités de firebase
 const db = firebase.database()
 
-export { firebase, db as default }
+// create an instance of authentification provider
+// on passera ensuite ce provider dans une fonction
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
+
+export { googleAuthProvider, firebase, db as default }
 
 /*
 // ref method: reference to a specfic part of our database

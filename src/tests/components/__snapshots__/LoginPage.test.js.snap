@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render LoginPage 1`] = `
+<div>
+  <p>
+    You must be logged in
+  </p>
+  <button>
+    Login
+  </button>
+</div>
+`;

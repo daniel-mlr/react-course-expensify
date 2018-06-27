@@ -1,11 +1,21 @@
+// src/components/Header.js
+/* eslint react/prop-types: 0 */
+
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { startLogout } from '../actions/auth.js'
 
-const Header = () => (
+export const Header = ({ startLogout }) => (
   <header>
     <h1>Expensify</h1>
     <NavLink to="/" activeClassName="is-active" exact={true}>Dashboard </NavLink>
     <NavLink to="/Create" activeClassName="is-active">Create Expense </NavLink>
+    <button onClick={startLogout}>Logout</button>
   </header>
 )
-export default Header
+const mapDispatchToProps = (dispatch) => ({
+  startLogout: () => dispatch(startLogout())
+})
+
+export default connect(undefined, mapDispatchToProps)(Header)
