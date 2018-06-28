@@ -4,17 +4,17 @@ import db from '../firebase/firebase'
 
 // Étapes du traitement synchrone:
 // ------------------------------
-// components call action generator
-// action generator returns object
-// component dispatchs object
-// redux stores changes
+// * components call action generator
+// * action generator returns object
+// * component dispatchs object
+// * redux stores changes
 
 // Étapes du traitement asynchrone:
 // --------------------------------
-// components call action generator
-// action generator returns a __function__
-// component dispatch function (redux-thunk add support for that)
-// function runs (has the ability to dispatch other actions and do whatever it wants)
+// * components call action generator
+// * action generator returns a __function__
+// * component dispatch function (redux-thunk add support for that)
+// * function runs (has the ability to dispatch other actions and do whatever it wants)
 
 // ADD_EXPENSE
 //export const addExpense = ({description='', note='', amount=0, createdAt=0} = {}) => ({
@@ -32,13 +32,15 @@ export const addExpense = (expense) => ({
 })
 
 export const startAddExpense = (expenseData = {}) => {
-  // on retourne maintenant une fonction, plus un objet
-  // cette fonction est appelée dans le code de redux avec comme argument 'dispatch'
-  return (dispatch) => {
+  // on retourne maintenant une fonction, plus un objet.  Cette fonction est
+  // appelée dans le code de redux avec comme argument 'dispatch'
+  // s16-L168 cette fonction permet aussi un second argument : getState
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid
     const { description='', note='', amount=0, createdAt=0 } = expenseData
     const expense = {description, note, amount, createdAt}
     // retourne le résultat pour qu'on puisse le chainer dans les tests
-    return db.ref('expenses').push(expense).then((ref) => {
+    return db.ref(`users/${uid}/expenses`).push(expense).then((ref) => {
       // ref est retourné si le push est réussi
       dispatch(addExpense({
         id: ref.key,
@@ -55,8 +57,9 @@ export const removeExpense = ({ id }) => ({
 })
 
 export const startRemoveExpense = ({ id }) => {
-  return (dispatch) => {
-    return db.ref(`expenses/${id}`).remove().then(() =>{
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid
+    return db.ref(`users/${uid}/expenses/${id}`).remove().then(() =>{
       dispatch(removeExpense({ id }))
     })
   }
@@ -70,8 +73,9 @@ export const editExpense = (id, updates) => ({
 })
 
 export const startEditExpense = (id, updates) => {
-  return (dispatch) => {
-    return db.ref(`expenses/${id}`).update(updates).then(() => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid
+    return db.ref(`users/${uid}/expenses/${id}`).update(updates).then(() => {
       dispatch(editExpense(id, updates))
     })
   }
@@ -84,10 +88,11 @@ export const setExpenses = (expenses) => ({
 })
 
 export const startSetExpenses = () => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     const expenses = []
+    const uid = getState().auth.uid
 
-    return db.ref('expenses').once('value')
+    return db.ref(`users/${uid}/expenses`).once('value')
       .then((snapshot) => {
         snapshot.forEach((childSnapshot) => {
           expenses.push({
