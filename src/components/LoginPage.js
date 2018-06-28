@@ -5,9 +5,12 @@ import React from 'react'
 import { startLogin } from '../actions/auth.js'
 
 export const LoginPage = ({ startLogin }) => (
-  <div>
-    <p>You must be logged in</p>
-    <button onClick={startLogin}>Login</button>
+  <div className="box-layout">
+    <div className="box-layout__box">
+      <h1 className="box-layout__title">Expensify App</h1>
+      <p>Example app made in Andrew Mead&#39;s React course on Udemy</p>
+      <button onClick={startLogin}>Login</button>
+    </div>
   </div>
 )
 
