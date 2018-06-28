@@ -1,0 +1,14 @@
+.button {
+  background: $curious-blue;
+  font-size: $font-size-large;
+  font-weight: 300;
+  color: white;
+  padding: $s-size $m-size;
+  border: none;
+  display: inline-block;
+  text-decoration: none;
+  line-height:1;
+}
+.button--link {
+  background: none;
+}
