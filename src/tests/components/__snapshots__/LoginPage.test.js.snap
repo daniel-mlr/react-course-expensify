@@ -1,12 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render LoginPage 1`] = `
-<div>
-  <p>
-    You must be logged in
-  </p>
-  <button>
-    Login
-  </button>
+<div
+  className="box-layout"
+>
+  <div
+    className="box-layout__box"
+  >
+    <h1
+      className="box-layout__title"
+    >
+      Expensify
+    </h1>
+    <p>
+      Example app made in Andrew Mead's React course on Udemy
+    </p>
+    <button
+      className="button"
+    >
+      Login with Google
+    </button>
+  </div>
 </div>
 `;

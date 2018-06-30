@@ -1,4 +1,4 @@
-/** s13 L137 refactoring directoryes
+/** s13 L137 refactoring directories
  * pour extraire les css et les placer dans un fichier séparé
  */
 
@@ -28,7 +28,8 @@ module.exports = (env) => {
   const CSSExtract = new MiniCssExtractPlugin({ filename:  'style.css' })
 
   return {
-    entry: './src/app.js',
+    // s17 L180 babel polyfill
+    entry: ['babel-polyfill', './src/app.js' ],
     mode: 'development',
     output: {
       path: path.join(__dirname, 'public', 'dist'),
